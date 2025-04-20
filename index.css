@@ -1,12 +1,22 @@
-/* item-1 */
+/* Common Styles */
+.header,
+h1,
+h2,
+h3,
+.h3_5,
+h4,
+p {
+  font-family: "Smythe";
+  font-style: normal;
+  font-weight: 400;
+}
 
+/* Header Styles */
 .header {
   width: 100%;
   min-height: 200px;
-  height: auto;
   background-image: url("images/background_burger.png");
   background-size: cover;
-  background-repeat: no-repeat;
   background-position: center;
   color: #ffffff;
   padding: 4vw 2vw;
@@ -16,11 +26,8 @@
   flex-direction: column;
 }
 
+/* Typography */
 h1 {
-  text-align: left;
-  font-family: "Smythe";
-  font-style: normal;
-  font-weight: 400;
   font-size: clamp(24px, 8vw, 60px);
   line-height: 1.2;
   margin: 0;
@@ -28,63 +35,41 @@ h1 {
 }
 
 h2 {
-  font-family: "Smythe";
-  font-style: normal;
-  font-weight: 400;
   font-size: clamp(16px, 4vw, 24px);
   line-height: 1.2;
   color: #ffffff;
   margin: 10px 0;
 }
 
-h3 {
-  /* item title */
-  font-family: "Smythe";
-  font-style: normal;
-  font-weight: 400;
+h3,
+.h3_5 {
   font-size: 28px;
   line-height: 17px;
-  /* identical to box height, or 60% */
   color: #000000;
 }
 
 .h3_5 {
-  /* item title */
-  font-family: "Smythe";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 28px;
-  line-height: 17px;
-  /* identical to box height, or 60% */
-  color: #000000;
   text-align: center;
 }
+
 h4 {
-  /* item price */
-  font-family: "Smythe";
-  font-style: normal;
-  font-weight: 400;
   font-size: 20px;
   line-height: 24px;
-  /* identical to box height, or 120% */
   color: #000000;
 }
 
 p {
-  /* item description */
-  font-family: "Smythe";
-  font-style: normal;
-  font-weight: 400;
   font-size: 16px;
   line-height: 24px;
-  /* identical to box height, or 150% */
   color: #8b8b8b;
 }
 
+/* Food Item Styles */
 .foodTab {
   display: flex;
   flex-direction: column;
 }
+
 .food {
   display: flex;
   flex-direction: row;
@@ -94,7 +79,6 @@ p {
 }
 
 .emoji {
-  padding-right: 2px;
   width: 20%;
   font-weight: 800;
   font-size: 9vw;
@@ -103,29 +87,26 @@ p {
 
 .foodDescription {
   width: 60%;
-  padding-bottom: 10px;
-  padding-left: 2px;
+  padding: 0 2px 10px;
 }
 
+/* Button Styles */
 .addItem {
-  width: 10%;
-  aspect-ratio: 1;
-  padding: 10px;
-  margin-right: 1px;
-
+  width: 50px;
+  height: 50px;
+  border: 1.5px solid #dedede;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  /* Ellipse 1 */
-
-  box-sizing: border-box;
-
-  width: 50px;
-  height: 50px;
-
-  border: 1.5px solid #dedede;
 }
+.orderFoodtab {
+  display: flex;
+  flex-direction: column;
+  padding: 20px 0;
+  border-bottom: 1px solid #d2d2d2;
+}
+/* Order Menu Styles */
 .orderMenu {
   display: none;
   flex-direction: column;
@@ -137,36 +118,46 @@ p {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
 }
-/* item-1 */
+
+.orderName {
+  display: flex;
+  flex-direction: row;
+  padding: 20px 0;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 2vw;
+  color: #000000;
+}
 
 .completeOrder {
-  /* purchase btn */
   width: 508px;
   height: 60px;
   align-self: center;
-
   background: #16db99;
-  /* shadow/sm */
   box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
   border-radius: 3px;
-  /* btn text */
-
   font-family: "Verdana";
-  font-style: normal;
   font-weight: 700;
   font-size: 16px;
   line-height: 24px;
-  /* identical to box height, or 150% */
-
-  /* white */
   color: #ffffff;
 }
 
+/* Price Styles */
 .totalPriceContainer {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   padding: 20px 0;
   border-top: 4px solid #d2d2d2;
+}
+
+.totalPrice {
+  display: flex;
+  align-items: center;
+  font-size: 28px;
+  line-height: 17px;
+  color: #000000;
 }
