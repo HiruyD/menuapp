@@ -1,5 +1,6 @@
 import { menuArray } from "./data.js";
 const selectedItems = [];
+let totalPriceEl = document.getElementById("totalPrice");
 
 document.addEventListener("click", function (e) {
   if (e.target.dataset.additem) {
@@ -14,6 +15,14 @@ document.addEventListener("click", function (e) {
   }
 });
 
+function calculateTotalPrice() {
+  let totalPrice = 0;
+  selectedItems.forEach(function (item) {
+    totalPrice += item.price;
+  });
+  totalPriceEl.innerText = `$${totalPrice.toFixed(2)}`;
+}
+
 function addFood(food) {
   const targetItem = menuArray.filter(function (me) {
     return me.id == food;
@@ -23,6 +32,7 @@ function addFood(food) {
     return;
   }
   selectedItems.push(targetItem);
+  calculateTotalPrice();
   renderTwo();
 }
 
