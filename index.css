@@ -47,6 +47,18 @@ h3 {
   /* identical to box height, or 60% */
   color: #000000;
 }
+
+.h3_5 {
+  /* item title */
+  font-family: "Smythe";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 28px;
+  line-height: 17px;
+  /* identical to box height, or 60% */
+  color: #000000;
+  text-align: center;
+}
 h4 {
   /* item price */
   font-family: "Smythe";
