@@ -1,0 +1,129 @@
+/* item-1 */
+
+.header {
+  width: 100%;
+  min-height: 200px;
+  height: auto;
+  background-image: url("images/background_burger.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  color: #ffffff;
+  padding: 4vw 2vw;
+  border: 2px solid #d2d2d2;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+h1 {
+  text-align: left;
+  font-family: "Smythe";
+  font-style: normal;
+  font-weight: 400;
+  font-size: clamp(24px, 8vw, 60px);
+  line-height: 1.2;
+  margin: 0;
+  padding: 0;
+}
+
+h2 {
+  font-family: "Smythe";
+  font-style: normal;
+  font-weight: 400;
+  font-size: clamp(16px, 4vw, 24px);
+  line-height: 1.2;
+  color: #ffffff;
+  margin: 10px 0;
+}
+
+h3 {
+  /* item title */
+  font-family: "Smythe";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 28px;
+  line-height: 17px;
+  /* identical to box height, or 60% */
+  color: #000000;
+}
+h4 {
+  /* item price */
+  font-family: "Smythe";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+  /* identical to box height, or 120% */
+  color: #000000;
+}
+
+p {
+  /* item description */
+  font-family: "Smythe";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  /* identical to box height, or 150% */
+  color: #8b8b8b;
+}
+
+.foodTab {
+  display: flex;
+  flex-direction: column;
+}
+.food {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-bottom: 1px solid #d2d2d2;
+  padding: 20px 0;
+}
+
+.emoji {
+  padding-right: 2px;
+  width: 20%;
+  font-weight: 800;
+  font-size: 9vw;
+  padding: 10px;
+}
+
+.foodDescription {
+  width: 60%;
+  padding-bottom: 10px;
+  padding-left: 2px;
+}
+
+.addItem {
+  width: 10%;
+  aspect-ratio: 1;
+  padding: 10px;
+  margin-right: 1px;
+
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Ellipse 1 */
+
+  box-sizing: border-box;
+
+  width: 50px;
+  height: 50px;
+
+  border: 1.5px solid #dedede;
+}
+.orderMenu {
+  display: none;
+  flex-direction: column;
+  padding: 20px 0;
+  border-bottom: 1px solid #d2d2d2;
+}
+
+.orderFood {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+/* item-1 */
