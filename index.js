@@ -71,31 +71,27 @@ function addItemtoOrder() {
   selectedItems
     .map(function (itemEl) {
       feedHtmltwo += `
-                <div class="orderFoodtab">
-                    <div class="orderFood">
-                        <div class="orderName">
-                            <h3>${itemEl.name}</h3>  // Display item name
-                        </div>
-                        <span class="counter">x ${
-                          itemEl.count
-                        }</span>  // Show quantity
-                        <button 
-                            class="remover"  // Class for event delegation
-                            data-remove="${
-                              itemEl.id
-                            }"  // Store item ID for removal
-                            type="button">  // Prevent form submission
-                            remove
-                        </button>
-                        <div>                      
-                            <h4 class="amount">$${
-                              itemEl.price * itemEl.count // Calculate total for this item
-                            }</h4>              
-                        </div>
+            <div class="orderFoodtab">
+                <div class="orderFood">
+                    <div class="orderName">
+                        <h3>${itemEl.name}</h3> 
                     </div>
-                </div>`;
+                    <span class="counter">x ${itemEl.count}</span>
+                    <button 
+                        class="remover" 
+                        data-remove="${itemEl.id}"
+                        type="button">
+                        remove
+                    </button>
+                    <div>                      
+                        <h4 class="amount">$${
+                          itemEl.price * itemEl.count
+                        }</h4>              
+                    </div>
+                </div>
+            </div>`;
     })
-    .join(""); // Convert array to string, removing commas
+    .join("");
   return feedHtmltwo;
 }
 
@@ -137,21 +133,16 @@ function removeItem(itemId) {
 }
 
 function renderTwo() {
-  // Get the order container element
   const orderList = document.getElementById("order");
-  // Update its content with the new order HTML
   orderList.innerHTML = addItemtoOrder();
 }
 
 // Price Calculation
 function calculateTotalPrice() {
   let totalPrice = 0;
-  // Loop through all selected items
   selectedItems.forEach(function (item) {
-    // Add price * quantity to total
     totalPrice += item.price * item.count;
   });
-  // Display total with 2 decimal places
   totalPriceEl.innerText = `$${totalPrice.toFixed(2)}`;
 }
 
