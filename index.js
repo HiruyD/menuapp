@@ -6,7 +6,10 @@ let totalPriceEl = document.getElementById("totalPrice");
 
 // Event Listeners
 document.getElementById("compOrder").addEventListener("click", function () {
-  alert("still in progress");
+  alert("Your order has been completed!");
+  selectedItems.length = 0; // Clear the selected items array
+  totalPriceEl.innerText = "$0.00"; // Reset the total price display
+  menu.style.display = "none"; // Hide the order menu
 });
 
 document.addEventListener("click", function (e) {
