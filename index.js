@@ -18,12 +18,11 @@ document.addEventListener("click", function (e) {
       menu.style.display = "none";
     }
   }
-  if (!e.target.id === `${menuArray.id}`) {
-    remover();
-  }
+  // Update this condition
   if (e.target.classList.contains("remover")) {
-    const itemId = e.target.dataset.remove;
-    removeItem(itemId);
+    const itemId = e.target.dataset.remove; // Get the ID from data-remove attribute
+    console.log("Removing item with ID:", itemId); // Debug log to track ID
+    removeItem(itemId); // Call remove function with the item's ID
   }
 });
 
@@ -55,8 +54,8 @@ function renderOne() {
 
 // Order Management Functions
 function addFood(food) {
-  const targetItem = menuArray.filter(function (me) {
-    return me.id == food;
+  const targetItem = menuArray.filter(function (menuItem) {
+    return menuItem.id == food;
   })[0];
   if (!selectedItems.includes(targetItem)) {
     selectedItems.push(targetItem);
@@ -66,69 +65,93 @@ function addFood(food) {
   renderTwo();
 }
 
-function removeItem(itemId) {
-  const itemIndex = selectedItems.findIndex((item) => item.id === itemId);
-  if (itemIndex !== -1) {
-    const item = selectedItems[itemIndex];
-    item.count--;
-    if (item.count === 0) {
-      selectedItems.splice(itemIndex, 1);
-    }
-    calculateTotalPrice();
-    renderTwo();
-    if (selectedItems.length === 0) {
-      menu.style.display = "none";
-    }
-  }
-}
-
-function remover() {
-  menu.style.display = "none";
-  if (selectedItems.length > 0) {
-    selectedItems.count--;
-  }
-}
-
 // Order Display Functions
 function addItemtoOrder() {
   let feedHtmltwo = "";
   selectedItems
     .map(function (itemEl) {
       feedHtmltwo += `
-            <div class="orderFoodtab">
+                <div class="orderFoodtab">
                     <div class="orderFood">
-                            <div class="orderName">
-                                  <h3>${itemEl.name}</h3> 
-                            </div>
-                               <span class="counter">x ${itemEl.count}</span>
-                               <button 
-                                  class="remover" 
-                                  data-remove="${itemEl.id}">
-                                  remove
-                               </button>
-                            <div>                      
-                                  <h4 class="amount">$${
-                                    itemEl.price * itemEl.count
-                                  }</h4>              
-                            </div>
-                      </div>
-                    </div>`;
+                        <div class="orderName">
+                            <h3>${itemEl.name}</h3>  // Display item name
+                        </div>
+                        <span class="counter">x ${
+                          itemEl.count
+                        }</span>  // Show quantity
+                        <button 
+                            class="remover"  // Class for event delegation
+                            data-remove="${
+                              itemEl.id
+                            }"  // Store item ID for removal
+                            type="button">  // Prevent form submission
+                            remove
+                        </button>
+                        <div>                      
+                            <h4 class="amount">$${
+                              itemEl.price * itemEl.count // Calculate total for this item
+                            }</h4>              
+                        </div>
+                    </div>
+                </div>`;
     })
-    .join("");
+    .join(""); // Convert array to string, removing commas
   return feedHtmltwo;
 }
 
+function removeItem(itemId) {
+  // Log current state of selected items for debugging
+  console.log("Selected Items before removal:", selectedItems);
+
+  // Find the index of the item in selectedItems array
+  // Using == instead of === because itemId might be string while item.id might be number
+  const index = selectedItems.findIndex((item) => item.id == itemId);
+
+  // Log the found index for debugging
+  console.log("Found index:", index);
+
+  // Only proceed if item was found (-1 means not found)
+  if (index !== -1) {
+    // Decrease the item's count by 1
+    selectedItems[index].count--;
+
+    // Log the new count for debugging
+    console.log("New count:", selectedItems[index].count);
+
+    // If count reaches 0, remove item completely from array
+    if (selectedItems[index].count === 0) {
+      selectedItems.splice(index, 1);
+    }
+
+    // Update the total price display
+    calculateTotalPrice();
+
+    // Re-render the order display
+    renderTwo();
+
+    // If no items left, hide the order menu
+    if (selectedItems.length === 0) {
+      menu.style.display = "none";
+    }
+  }
+}
+
 function renderTwo() {
+  // Get the order container element
   const orderList = document.getElementById("order");
+  // Update its content with the new order HTML
   orderList.innerHTML = addItemtoOrder();
 }
 
 // Price Calculation
 function calculateTotalPrice() {
   let totalPrice = 0;
+  // Loop through all selected items
   selectedItems.forEach(function (item) {
+    // Add price * quantity to total
     totalPrice += item.price * item.count;
   });
+  // Display total with 2 decimal places
   totalPriceEl.innerText = `$${totalPrice.toFixed(2)}`;
 }
 
